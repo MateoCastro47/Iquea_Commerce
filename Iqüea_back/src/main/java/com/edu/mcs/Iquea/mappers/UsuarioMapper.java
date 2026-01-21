@@ -3,6 +3,7 @@ package com.edu.mcs.Iquea.mappers;
 import java.util.List;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.MappingTarget;
 
 import com.edu.mcs.Iquea.models.Usuario;
 import com.edu.mcs.Iquea.models.dto.detalle.UsuarioDetalleDTO;
@@ -16,4 +17,5 @@ public interface  UsuarioMapper {
 
     Usuario toEntity(UsuarioDetalleDTO dto);
 
+    void updatefromEntity(UsuarioDetalleDTO dto, @MappingTarget Usuario usuario);
 }
