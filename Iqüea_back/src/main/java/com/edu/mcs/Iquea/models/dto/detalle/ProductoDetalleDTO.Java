@@ -7,6 +7,7 @@ import com.edu.mcs.Iquea.models.dto.resumen.CategoriaResumenDTO;
 public class ProductoDetalleDTO {
 
     private Long producto_id;
+    private String sku;
     private String nombre;
     private BigDecimal precioCantidad;
     private String precioMoneda;
@@ -21,7 +22,7 @@ public class ProductoDetalleDTO {
 
     public ProductoDetalleDTO(Long producto_id, String nombre, BigDecimal precioCantidad, String precioMoneda,
             Double dimensionesAlto, Double dimensionesAncho, Double dimensionesProfundo, boolean es_destacado,
-            CategoriaResumenDTO categoria) {
+            CategoriaResumenDTO categoria, String sku) {
         this.producto_id = producto_id;
         this.nombre = nombre;
         this.precioCantidad = precioCantidad;
@@ -31,6 +32,7 @@ public class ProductoDetalleDTO {
         this.dimensionesProfundo = dimensionesProfundo;
         this.es_destacado = es_destacado;
         this.categoria = categoria;
+        this.sku = sku;
     }
 
     public Long getProducto_id() {
@@ -39,6 +41,14 @@ public class ProductoDetalleDTO {
 
     public void setProducto_id(Long producto_id) {
         this.producto_id = producto_id;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
     public String getNombre() {

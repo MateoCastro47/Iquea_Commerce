@@ -31,6 +31,9 @@ public class Producto {
     @Column(name = "nombre", length = 155, nullable = false)
     private String nombre;
 
+    @Column(name = "sku", unique = true, nullable = false, length = 50)
+    private String sku;
+
     @Embedded
     @AttributeOverrides({
             @AttributeOverride(name = "cantidad", column = @Column(name = "Cantidad", nullable = false, scale = 2)),
@@ -53,13 +56,14 @@ public class Producto {
     }
 
     public Producto(Categorias categoria, Dimensiones dimensiones, boolean es_destacado, String nombre, Precio precio,
-            Long producto_id) {
+            Long producto_id, String sku) {
         this.categoria = categoria;
         this.dimensiones = dimensiones;
         this.es_destacado = es_destacado;
         this.nombre = nombre;
         this.precio = precio;
         this.producto_id = producto_id;
+        this.sku = sku;
     }
 
     public Long getProducto_id() {
@@ -72,6 +76,10 @@ public class Producto {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public String getSku() {
+        return sku;
     }
 
     public Precio getPrecio() {
@@ -88,6 +96,10 @@ public class Producto {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
     public void vincularCategoria(Categorias categoria) {
