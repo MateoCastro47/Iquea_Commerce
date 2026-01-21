@@ -1,40 +1,44 @@
 package com.edu.mcs.Iquea.models.dto.detalle;
 
+import java.math.BigDecimal;
+
+import com.edu.mcs.Iquea.models.dto.resumen.CategoriaResumenDTO;
+
 public class ProductoDetalleDTO {
 
-    private Long productoId;
+    private Long producto_id;
     private String nombre;
     private BigDecimal precioCantidad;
     private String precioMoneda;
     private Double dimensionesAlto;
     private Double dimensionesAncho;
     private Double dimensionesProfundo;
-    private boolean esDestacado;
+    private boolean es_destacado;
     private CategoriaResumenDTO categoria;
 
     public ProductoDetalleDTO() {
     }
 
-    public ProductoDetalleDTO(Long productoId, String nombre, BigDecimal precioCantidad, String precioMoneda,
-            Double dimensionesAlto, Double dimensionesAncho, Double dimensionesProfundo, boolean esDestacado,
+    public ProductoDetalleDTO(Long producto_id, String nombre, BigDecimal precioCantidad, String precioMoneda,
+            Double dimensionesAlto, Double dimensionesAncho, Double dimensionesProfundo, boolean es_destacado,
             CategoriaResumenDTO categoria) {
-        this.productoId = productoId;
+        this.producto_id = producto_id;
         this.nombre = nombre;
         this.precioCantidad = precioCantidad;
         this.precioMoneda = precioMoneda;
         this.dimensionesAlto = dimensionesAlto;
         this.dimensionesAncho = dimensionesAncho;
         this.dimensionesProfundo = dimensionesProfundo;
-        this.esDestacado = esDestacado;
+        this.es_destacado = es_destacado;
         this.categoria = categoria;
     }
 
-    public Long getProductoId() {
-        return productoId;
+    public Long getProducto_id() {
+        return producto_id;
     }
 
-    public void setProductoId(Long productoId) {
-        this.productoId = productoId;
+    public void setProducto_id(Long producto_id) {
+        this.producto_id = producto_id;
     }
 
     public String getNombre() {
@@ -85,12 +89,12 @@ public class ProductoDetalleDTO {
         this.dimensionesProfundo = dimensionesProfundo;
     }
 
-    public boolean isEsDestacado() {
-        return esDestacado;
+    public boolean ises_destacado() {
+        return es_destacado;
     }
 
-    public void setEsDestacado(boolean esDestacado) {
-        this.esDestacado = esDestacado;
+    public void setes_destacado(boolean es_destacado) {
+        this.es_destacado = es_destacado;
     }
 
     public CategoriaResumenDTO getCategoria() {

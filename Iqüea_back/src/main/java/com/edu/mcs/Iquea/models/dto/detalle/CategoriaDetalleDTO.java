@@ -5,7 +5,7 @@ import java.util.List;
 import com.edu.mcs.Iquea.models.dto.resumen.ProductoResumenDTO;
 
 public class CategoriaDetalleDTO {
-    private Long categoriaId;
+    private Long categoria_id;
     private String nombre;
     private String slug;
     private List<ProductoResumenDTO> productos;
@@ -13,19 +13,19 @@ public class CategoriaDetalleDTO {
     public CategoriaDetalleDTO() {
     }
 
-    public CategoriaDetalleDTO(Long categoriaId, String nombre, String slug, List<ProductoResumenDTO> productos) {
-        this.categoriaId = categoriaId;
+    public CategoriaDetalleDTO(Long categoria_id, String nombre, String slug, List<ProductoResumenDTO> productos) {
+        this.categoria_id = categoria_id;
         this.nombre = nombre;
         this.slug = slug;
         this.productos = productos;
     }
 
-    public Long getCategoriaId() {
-        return categoriaId;
+    public Long getCategoria_id() {
+        return categoria_id;
     }
 
-    public void setCategoriaId(Long categoriaId) {
-        this.categoriaId = categoriaId;
+    public void setCategoria_id(Long categoria_id) {
+        this.categoria_id = categoria_id;
     }
 
     public String getNombre() {

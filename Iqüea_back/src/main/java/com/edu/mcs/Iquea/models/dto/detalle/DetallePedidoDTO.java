@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import com.edu.mcs.Iquea.models.dto.resumen.ProductoResumenDTO;
 
 public class DetallePedidoDTO {
-    private Long detallePedidoId;
+    private Long detalle_id;
     private ProductoResumenDTO producto;
     private Integer cantidad;
     private BigDecimal precioUnitario;
@@ -14,21 +14,21 @@ public class DetallePedidoDTO {
     public DetallePedidoDTO() {
     }
 
-    public DetallePedidoDTO(Long detallePedidoId, ProductoResumenDTO producto, Integer cantidad,
+    public DetallePedidoDTO(Long detalle_id, ProductoResumenDTO producto, Integer cantidad,
             BigDecimal precioUnitario, BigDecimal subtotal) {
-        this.detallePedidoId = detallePedidoId;
+        this.detalle_id = detalle_id;
         this.producto = producto;
         this.cantidad = cantidad;
         this.precioUnitario = precioUnitario;
         this.subtotal = subtotal;
     }
 
-    public Long getDetallePedidoId() {
-        return detallePedidoId;
+    public Long getDetalle_id() {
+        return detalle_id;
     }
 
-    public void setDetallePedidoId(Long detallePedidoId) {
-        this.detallePedidoId = detallePedidoId;
+    public void setDetalle_id(Long detalle_id) {
+        this.detalle_id = detalle_id;
     }
 
     public ProductoResumenDTO getProducto() {

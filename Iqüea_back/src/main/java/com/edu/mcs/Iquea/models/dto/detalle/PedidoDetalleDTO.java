@@ -8,32 +8,32 @@ import com.edu.mcs.Iquea.models.Enums.EstadoPedido;
 import com.edu.mcs.Iquea.models.dto.resumen.UsuarioResumenDTO;
 
 public class PedidoDetalleDTO {
-    private Long pedidoId;
+    private Long pedido_id;
     private UsuarioResumenDTO usuario;
     private LocalDateTime fechaPedido;
-    private EstadoPedido estadoPedido;
+    private EstadoPedido estado;
     private List<DetallePedidoDTO> detalles;
     private BigDecimal total;
 
     public PedidoDetalleDTO() {
     }
 
-    public PedidoDetalleDTO(Long pedidoId, UsuarioResumenDTO usuario, LocalDateTime fechaPedido,
-            EstadoPedido estadoPedido, List<DetallePedidoDTO> detalles, BigDecimal total) {
-        this.pedidoId = pedidoId;
+    public PedidoDetalleDTO(Long pedido_id, UsuarioResumenDTO usuario, LocalDateTime fechaPedido,
+            EstadoPedido estado, List<DetallePedidoDTO> detalles, BigDecimal total) {
+        this.pedido_id = pedido_id;
         this.usuario = usuario;
         this.fechaPedido = fechaPedido;
-        this.estadoPedido = estadoPedido;
+        this.estado = estado;
         this.detalles = detalles;
         this.total = total;
     }
 
-    public Long getPedidoId() {
-        return pedidoId;
+    public Long getPedido_id() {
+        return pedido_id;
     }
 
-    public void setPedidoId(Long pedidoId) {
-        this.pedidoId = pedidoId;
+    public void setPedido_id(Long pedido_id) {
+        this.pedido_id = pedido_id;
     }
 
     public UsuarioResumenDTO getUsuario() {
@@ -52,12 +52,12 @@ public class PedidoDetalleDTO {
         this.fechaPedido = fechaPedido;
     }
 
-    public EstadoPedido getEstadoPedido() {
-        return estadoPedido;
+    public EstadoPedido getEstado() {
+        return estado;
     }
 
-    public void setEstadoPedido(EstadoPedido estadoPedido) {
-        this.estadoPedido = estadoPedido;
+    public void setEstado(EstadoPedido estado) {
+        this.estado = estado;
     }
 
     public List<DetallePedidoDTO> getDetalles() {

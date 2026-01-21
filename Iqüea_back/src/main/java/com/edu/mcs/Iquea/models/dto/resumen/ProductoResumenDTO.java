@@ -3,30 +3,30 @@ package com.edu.mcs.Iquea.models.dto.resumen;
 import java.math.BigDecimal;
 
 public class ProductoResumenDTO {
-    private Long productoId;
+    private Long producto_id;
     private String nombre;
     private BigDecimal precioCantidad;
     private String precioMoneda;
-    boolean esDestacado;
+    private boolean es_destacado;
 
     public ProductoResumenDTO() {
     }
 
-    public ProductoResumenDTO(Long productoId, String nombre, BigDecimal precioCantidad, String precioMoneda,
-            boolean esDestacado) {
-        this.productoId = productoId;
+    public ProductoResumenDTO(Long producto_id, String nombre, BigDecimal precioCantidad, String precioMoneda,
+            boolean es_destacado) {
+        this.producto_id = producto_id;
         this.nombre = nombre;
         this.precioCantidad = precioCantidad;
         this.precioMoneda = precioMoneda;
-        this.esDestacado = esDestacado;
+        this.es_destacado = es_destacado;
     }
 
-    public Long getProductoId() {
-        return productoId;
+    public Long getProducto_id() {
+        return producto_id;
     }
 
-    public void setProductoId(Long productoId) {
-        this.productoId = productoId;
+    public void setProducto_id(Long producto_id) {
+        this.producto_id = producto_id;
     }
 
     public String getNombre() {
@@ -53,12 +53,12 @@ public class ProductoResumenDTO {
         this.precioMoneda = precioMoneda;
     }
 
-    public boolean isEsDestacado() {
-        return esDestacado;
+    public boolean isEs_destacado() {
+        return es_destacado;
     }
 
-    public void setEsDestacado(boolean esDestacado) {
-        this.esDestacado = esDestacado;
+    public void setEs_destacado(boolean es_destacado) {
+        this.es_destacado = es_destacado;
     }
 
 }
