@@ -17,18 +17,18 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Producto")
-public class Producto{
+@Table(name = "Producto")
+public class Producto {
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long producto_id;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "categoria_id") // La columna en la tabla Producto que une con Categoria
     private Categorias categoria;
 
-    @Column(name = "nombre", length= 155, nullable= false)
+    @Column(name = "nombre", length = 155, nullable = false)
     private String nombre;
 
     @Embedded
@@ -43,16 +43,17 @@ public class Producto{
 
     @Embedded
     @AttributeOverrides({
-        @AttributeOverride(name = "alto", column= @Column(name= "Alto", nullable= false)),
-        @AttributeOverride(name = "ancho", column= @Column(name= "Ancho", nullable= false)),
-        @AttributeOverride(name= "profundidad", column= @Column(name="Profundidad", nullable= false))
+            @AttributeOverride(name = "alto", column = @Column(name = "Alto", nullable = false)),
+            @AttributeOverride(name = "ancho", column = @Column(name = "Ancho", nullable = false)),
+            @AttributeOverride(name = "profundidad", column = @Column(name = "Profundidad", nullable = false))
     })
     private Dimensiones dimensiones;
 
-    public Producto(){}
+    public Producto() {
+    }
 
-
-    public Producto(Categorias categoria, Dimensiones dimensiones, boolean es_destacado, String nombre, Precio precio, Long producto_id) {
+    public Producto(Categorias categoria, Dimensiones dimensiones, boolean es_destacado, String nombre, Precio precio,
+            Long producto_id) {
         this.categoria = categoria;
         this.dimensiones = dimensiones;
         this.es_destacado = es_destacado;
@@ -61,71 +62,64 @@ public class Producto{
         this.producto_id = producto_id;
     }
 
-
     public Long getProducto_id() {
         return producto_id;
     }
-
 
     public Categorias getCategoria() {
         return categoria;
     }
 
-
     public String getNombre() {
         return nombre;
     }
-
 
     public Precio getPrecio() {
         return precio;
     }
 
-
     public boolean isEs_destacado() {
         return es_destacado;
     }
-
 
     public Dimensiones getDimensiones() {
         return dimensiones;
     }
 
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public void vincularCategoria(Categorias categoria){
+    public void vincularCategoria(Categorias categoria) {
         if (this.categoria == categoria) {
-        return;
-    }
-        if(this.categoria != null){
+            return;
+        }
+        if (this.categoria != null) {
             this.categoria.getProductos().remove(this);
         }
 
         this.categoria = categoria;
 
-        if(categoria != null || !categoria.getProductos().contains(this)){
+        if (categoria != null || !categoria.getProductos().contains(this)) {
             categoria.getProductos().add(this);
         }
     }
 
+    public void setCategoria(Categorias categoria) {
+        vincularCategoria(categoria);
+    }
 
     public void setPrecio(Precio precio) {
         this.precio = precio;
     }
 
-
+    
     public void setEs_destacado(boolean es_destacado) {
         this.es_destacado = es_destacado;
     }
 
-
     public void setDimensiones(Dimensiones dimensiones) {
         this.dimensiones = dimensiones;
     }
-
-    
 
 }
