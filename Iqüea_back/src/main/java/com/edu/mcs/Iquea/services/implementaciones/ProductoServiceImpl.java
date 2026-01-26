@@ -1,5 +1,6 @@
 package com.edu.mcs.Iquea.services.implementaciones;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,5 +69,20 @@ public class ProductoServiceImpl implements IProductoService{
         return productoRepository.findAll();
     }
 
-    
+    public List<Producto> obtenerProductosPorCategoria(Long categoriaId) {
+        return productoRepository.findbyCategoriaId(categoriaId);
+    }
+
+    public List<Producto> obtenerProductosPorDestacado(boolean es_destacado){
+        return productoRepository.findbyes_destacado(es_destacado);
+    }
+
+    public List<Producto> obtenerProductoPorRango(BigDecimal precioMinimo, BigDecimal precioMaximo){
+        return productoRepository.findbyPrecioCantidadBetween(precioMinimo, precioMaximo);
+    }
+
+    public List<Producto> obtenerProductoPorLetra(String nombre){
+        return productoRepository.findbyNombreContainingCase(nombre);
+    }
+
 }
