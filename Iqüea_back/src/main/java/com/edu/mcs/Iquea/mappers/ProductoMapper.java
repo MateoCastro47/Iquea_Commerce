@@ -8,6 +8,7 @@ import org.mapstruct.MappingTarget;
 
 import com.edu.mcs.Iquea.models.Producto;
 import com.edu.mcs.Iquea.models.dto.detalle.ProductoDetalleDTO;
+import com.edu.mcs.Iquea.models.dto.detalle.*;
 
 @Mapper(componentModel = "spring", uses = {CategoriaMapperResumen.class})
 public interface ProductoMapper {
