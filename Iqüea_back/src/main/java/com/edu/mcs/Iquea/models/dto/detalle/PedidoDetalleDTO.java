@@ -9,6 +9,7 @@ import com.edu.mcs.Iquea.models.dto.resumen.UsuarioResumenDTO;
 
 public class PedidoDetalleDTO {
     private Long pedido_id;
+    private String referencia;
     private UsuarioResumenDTO usuario;
     private LocalDateTime fechaPedido;
     private EstadoPedido estado;
@@ -18,9 +19,10 @@ public class PedidoDetalleDTO {
     public PedidoDetalleDTO() {
     }
 
-    public PedidoDetalleDTO(Long pedido_id, UsuarioResumenDTO usuario, LocalDateTime fechaPedido,
+    public PedidoDetalleDTO(Long pedido_id, String referencia, UsuarioResumenDTO usuario, LocalDateTime fechaPedido,
             EstadoPedido estado, List<DetallePedidoDTO> detalles, BigDecimal total) {
         this.pedido_id = pedido_id;
+        this.referencia = referencia;
         this.usuario = usuario;
         this.fechaPedido = fechaPedido;
         this.estado = estado;
@@ -34,6 +36,14 @@ public class PedidoDetalleDTO {
 
     public void setPedido_id(Long pedido_id) {
         this.pedido_id = pedido_id;
+    }
+
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
     }
 
     public UsuarioResumenDTO getUsuario() {

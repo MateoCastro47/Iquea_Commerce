@@ -99,11 +99,11 @@ public class ProductoDetalleDTO {
         this.dimensionesProfundo = dimensionesProfundo;
     }
 
-    public boolean ises_destacado() {
+    public boolean isEs_destacado() {
         return es_destacado;
     }
 
-    public void setes_destacado(boolean es_destacado) {
+    public void setEs_destacado(boolean es_destacado) {
         this.es_destacado = es_destacado;
     }
 
