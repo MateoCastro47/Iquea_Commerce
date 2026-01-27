@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.security.SecureRandom;
 
 import com.edu.mcs.Iquea.models.Enums.EstadoPedido;
 
@@ -28,9 +27,6 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long pedido_id;
-
-    @Column(name = "referencia", unique = true, nullable = false)
-    private String referencia = generarReferencia();
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
@@ -74,30 +70,12 @@ public class Pedido {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
-    private static String generarReferencia() {
-        String caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        StringBuilder sb = new StringBuilder();
-        SecureRandom random = new SecureRandom();
-        for (int i = 0; i < 10; i++) {
-            sb.append(caracteres.charAt(random.nextInt(caracteres.length())));
-        }
-        return sb.toString();
-    }
-
     public Long getPedido_id() {
         return pedido_id;
     }
 
     public void setPedido_id(Long pedido_id) {
         this.pedido_id = pedido_id;
-    }
-
-    public String getReferencia() {
-        return referencia;
-    }
-
-    public void setReferencia(String referencia) {
-        this.referencia = referencia;
     }
 
     public Usuario getUsuario() {
