@@ -83,6 +83,9 @@ public class ProductoServiceImpl implements IProductoService{
 
     @Transactional
     public List<Producto> obtenerProductoPorRango(BigDecimal precioMinimo, BigDecimal precioMaximo){
+        if (precioMaximo.compareTo(precioMinimo) < 0) {
+            throw new IllegalArgumentException("El precio máximo no puede ser menor que el mínimo");
+        }
         return productoRepository.findbyPrecioCantidadBetween(precioMinimo, precioMaximo);
     }
 
