@@ -70,19 +70,23 @@ public class ProductoServiceImpl implements IProductoService{
     public List<Producto> obtenertodoslosproductos() {
         return productoRepository.findAll();
     }
-
+    
+    @Transactional
     public List<Producto> obtenerProductosPorCategoria(Long categoriaId) {
         return productoRepository.findbyCategoriaId(categoriaId);
     }
 
+    @Transactional
     public List<Producto> obtenerProductosPorDestacado(boolean es_destacado){
         return productoRepository.findbyes_destacado(es_destacado);
     }
 
+    @Transactional
     public List<Producto> obtenerProductoPorRango(BigDecimal precioMinimo, BigDecimal precioMaximo){
         return productoRepository.findbyPrecioCantidadBetween(precioMinimo, precioMaximo);
     }
 
+    @Transactional
     public List<Producto> obtenerProductoPorLetra(String nombre){
         return productoRepository.findbyNombreContainingCase(nombre);
     }
