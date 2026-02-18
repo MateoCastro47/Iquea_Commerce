@@ -1,0 +1,131 @@
+.product-detail-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+}
+
+.product-detail__img-wrap {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 4/3;
+}
+
+.product-detail__img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.product-detail__info {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-detail__cat {
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.product-detail__title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.1;
+}
+
+.product-detail__price {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.product-detail__desc {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 2rem;
+}
+
+.product-detail__actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.product-qty-input {
+    width: 60px;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.add-to-cart-btn {
+    flex: 1;
+    background-color: #000;
+    color: white;
+    padding: 1rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: center;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #333;
+}
+
+.add-to-cart-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.login-redirect-btn {
+    display: inline-block;
+    background-color: #000;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.login-redirect-btn:hover {
+    background-color: #333;
+}
+
+.product-meta {
+    margin-top: auto;
+    border-top: 1px solid #eee;
+    padding-top: 2rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.product-meta-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .product-detail-page {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+}
