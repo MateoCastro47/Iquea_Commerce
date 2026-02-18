@@ -2,6 +2,8 @@ package com.edu.mcs.Iquea.services.implementaciones;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.edu.mcs.Iquea.mappers.DetallePedidoMapper;
 import com.edu.mcs.Iquea.models.Detalle_pedido;
 import com.edu.mcs.Iquea.models.Pedido;
@@ -9,8 +11,6 @@ import com.edu.mcs.Iquea.models.dto.detalle.DetallePedidoDTO;
 import com.edu.mcs.Iquea.repositories.DetallePedidoRepository;
 import com.edu.mcs.Iquea.repositories.PedidoRepository;
 import com.edu.mcs.Iquea.services.IDetalleService;
-
-import org.springframework.stereotype.Service;
 
 @Service
 public class DetalleServiceImpl implements IDetalleService {
@@ -55,7 +55,7 @@ public class DetalleServiceImpl implements IDetalleService {
 
     @Override
     public List<Detalle_pedido> obtenerDetallesPorPedido(Long pedido_id) {
-        return detallePedidoRepository.findByPedido(pedido_id);
+        return detallePedidoRepository.findByPedidoId(pedido_id);
     }
 
     @Override
