@@ -2,27 +2,22 @@ package com.edu.mcs.Iquea.models.dto.detalle;
 
 import java.time.LocalDate;
 
+import com.edu.mcs.Iquea.models.Enums.RolUsuario;
 import com.edu.mcs.Iquea.models.Vo.Email;
 
 public class UsuarioDetalleDTO {
     private Long usuario_id;
     private String username;
+    private String nombre;
+    private String apellidos;
     private Email email;
     private LocalDate fecha_nacimiento;
     private String direccion_envio;
     private Boolean activo;
+    private String password;
+    private RolUsuario rol;
 
     public UsuarioDetalleDTO() {
-    }
-
-    public UsuarioDetalleDTO(Long usuario_id, String username, Email email, LocalDate fecha_nacimiento,
-            String direccion_envio, Boolean activo) {
-        this.usuario_id = usuario_id;
-        this.username = username;
-        this.email = email;
-        this.fecha_nacimiento = fecha_nacimiento;
-        this.direccion_envio = direccion_envio;
-        this.activo = activo;
     }
 
     public Long getUsuario_id() {
@@ -39,6 +34,22 @@ public class UsuarioDetalleDTO {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
     }
 
     public Email getEmail() {
@@ -71,5 +82,21 @@ public class UsuarioDetalleDTO {
 
     public void setActivo(Boolean activo) {
         this.activo = activo;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public RolUsuario getRol() {
+        return rol;
+    }
+
+    public void setRol(RolUsuario rol) {
+        this.rol = rol;
     }
 }

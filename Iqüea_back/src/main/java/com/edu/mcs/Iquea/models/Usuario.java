@@ -2,12 +2,15 @@ package com.edu.mcs.Iquea.models;
 
 import java.time.LocalDate;
 
+import com.edu.mcs.Iquea.models.Enums.RolUsuario;
 import com.edu.mcs.Iquea.models.Vo.Email;
 
 import jakarta.persistence.AttributeOverride;
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,9 +33,19 @@ public class Usuario {
     @Column(name = "direccion_envio", nullable = false)
     private String direccion_envio;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "rol", nullable = false)
+    private RolUsuario rol = RolUsuario.CLIENTE;
+
     @Embedded
     @AttributeOverride(name = "value", column = @Column(name = "Email", nullable = false, unique = true))
     private Email email;
+
+    @Column(name = "nombre", length = 100, nullable = false)
+    private String nombre;
+
+    @Column(name = "apellidos", length = 150, nullable = false)
+    private String apellidos;
 
     @Column(name = "activo")
     private boolean activo;
@@ -45,7 +58,7 @@ public class Usuario {
     }
 
     public Usuario(boolean activo, String direccion_envio, Email email, LocalDate fecha_nacimiento, String username,
-            Long usuario_id, String password) {
+            Long usuario_id, String password, String nombre, String apellidos, RolUsuario rol) {
         this.activo = activo;
         this.direccion_envio = direccion_envio;
         this.email = email;
@@ -53,6 +66,9 @@ public class Usuario {
         this.username = username;
         this.usuario_id = usuario_id;
         this.password = password;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.rol = rol;
     }
 
     public Long getUsuario_id() {
@@ -111,4 +127,27 @@ public class Usuario {
         this.password = password;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public RolUsuario getRol() {
+        return rol;
+    }
+
+    public void setRol(RolUsuario rol) {
+        this.rol = rol;
+    }
 }
