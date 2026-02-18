@@ -3,12 +3,14 @@ package com.edu.mcs.Iquea.services.implementaciones;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import com.edu.mcs.Iquea.mappers.PedidoMapper;
+import com.edu.mcs.Iquea.models.Enums.EstadoPedido;
 import com.edu.mcs.Iquea.models.Pedido;
 import com.edu.mcs.Iquea.models.Usuario;
-import com.edu.mcs.Iquea.models.Enums.EstadoPedido;
 import com.edu.mcs.Iquea.models.dto.detalle.PedidoDetalleDTO;
 import com.edu.mcs.Iquea.repositories.PedidoRepository;
 import com.edu.mcs.Iquea.services.IPedidoService;
@@ -51,11 +53,9 @@ public class PedidoServiceImpl implements IPedidoService{
     @Override
     @Transactional
     public Pedido crearPedido(PedidoDetalleDTO dto) {
-        if (pedidoRepository.existsById(dto.getPedido_id())) {
-            throw new IllegalArgumentException("Ya existe un pedido con id: " + dto.getPedido_id());
-        }
-
         Pedido pedido = pedidoMapper.toEntity(dto);
+        pedido.setFechaPedido(LocalDateTime.now()); // fecha automática
+        pedido.setEstado(EstadoPedido.PENDIENTE); // estado inicial
         return pedidoRepository.save(pedido);
     }
 
