@@ -6,10 +6,9 @@ import com.edu.mcs.Iquea.models.Usuario;
 import com.edu.mcs.Iquea.models.Vo.Email;
 import java.util.Optional;
 
-
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-    boolean existByEmail(Email email);
+    boolean existsByEmail(Email email);
 
     boolean existsByUsername(String username);
 

@@ -52,11 +52,20 @@ public class Producto {
     })
     private Dimensiones dimensiones;
 
+    @Column(name = "descripcion", columnDefinition = "TEXT")
+    private String descripcion;
+
+    @Column(name = "stock", nullable = false)
+    private Integer stock = 0;
+
+    @Column(name = "imagen_url")
+    private String imagenUrl;
+
     public Producto() {
     }
 
     public Producto(Categorias categoria, Dimensiones dimensiones, boolean es_destacado, String nombre, Precio precio,
-            Long producto_id, String sku) {
+            Long producto_id, String sku, String descripcion, Integer stock, String imagenUrl) {
         this.categoria = categoria;
         this.dimensiones = dimensiones;
         this.es_destacado = es_destacado;
@@ -64,6 +73,9 @@ public class Producto {
         this.precio = precio;
         this.producto_id = producto_id;
         this.sku = sku;
+        this.descripcion = descripcion;
+        this.stock = stock;
+        this.imagenUrl = imagenUrl;
     }
 
     public Long getProducto_id() {
@@ -94,6 +106,18 @@ public class Producto {
         return dimensiones;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public String getImagenUrl() {
+        return imagenUrl;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -112,7 +136,7 @@ public class Producto {
 
         this.categoria = categoria;
 
-        if (categoria != null || !categoria.getProductos().contains(this)) {
+        if (categoria != null && !categoria.getProductos().contains(this)) {
             categoria.getProductos().add(this);
         }
     }
@@ -125,13 +149,24 @@ public class Producto {
         this.precio = precio;
     }
 
-    
     public void setEs_destacado(boolean es_destacado) {
         this.es_destacado = es_destacado;
     }
 
     public void setDimensiones(Dimensiones dimensiones) {
         this.dimensiones = dimensiones;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public void setImagenUrl(String imagenUrl) {
+        this.imagenUrl = imagenUrl;
     }
 
 }

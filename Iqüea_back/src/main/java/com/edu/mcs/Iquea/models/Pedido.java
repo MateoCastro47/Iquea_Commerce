@@ -39,8 +39,29 @@ public class Pedido {
     @Column(name = "estado", nullable = false)
     private EstadoPedido estado;
 
+    @Column(name = "referencia", unique = true, nullable = false, length = 10)
+    private String referencia;
+
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Detalle_pedido> detalles = new ArrayList<>();
+
+    @com.fasterxml.jackson.annotation.JsonIgnore
+    public static String generarCodigoAleatorio() {
+        String caracteres = "ABCDEFGHJKLMNPQRSTUVWXYZ0123456789";
+        java.security.SecureRandom random = new java.security.SecureRandom();
+        StringBuilder codigo = new StringBuilder(10);
+        for (int i = 0; i < 10; i++) {
+            codigo.append(caracteres.charAt(random.nextInt(caracteres.length())));
+        }
+        return codigo.toString();
+    }
+
+    @jakarta.persistence.PrePersist
+    private void generarReferencia() {
+        if (this.referencia == null) {
+            this.referencia = generarCodigoAleatorio();
+        }
+    }
 
     public Pedido() {
     }
@@ -108,6 +129,14 @@ public class Pedido {
 
     public void setDetalles(List<Detalle_pedido> detalles) {
         this.detalles = detalles;
+    }
+
+    public String getReferencia() {
+        return referencia;
+    }
+
+    public void setReferencia(String referencia) {
+        this.referencia = referencia;
     }
 
 }

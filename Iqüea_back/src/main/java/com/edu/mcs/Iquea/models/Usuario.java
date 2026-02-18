@@ -14,40 +14,45 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Usuario")
+@Table(name = "Usuario")
 public class Usuario {
-    
+
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long usuario_id;
 
-    @Column(name="username", length=100, nullable=false)
+    @Column(name = "username", length = 100, nullable = false)
     private String username;
 
-    @Column(name = "fecha_nacimiento", length=100, nullable=false)
+    @Column(name = "fecha_nacimiento", length = 100, nullable = false)
     private LocalDate fecha_nacimiento;
 
-    @Column(name="direccion_envio", nullable=false)
+    @Column(name = "direccion_envio", nullable = false)
     private String direccion_envio;
 
     @Embedded
-    @AttributeOverride(name = "value", column= @Column(name = "Email", nullable= false, unique=true))
+    @AttributeOverride(name = "value", column = @Column(name = "Email", nullable = false, unique = true))
     private Email email;
-    
-    @Column(name="activo")
+
+    @Column(name = "activo")
     private boolean activo;
 
-    public Usuario(){
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    public Usuario() {
 
     }
 
-    public Usuario(boolean activo, String direccion_envio, Email email, LocalDate fecha_nacimiento, String username, Long usuario_id) {
+    public Usuario(boolean activo, String direccion_envio, Email email, LocalDate fecha_nacimiento, String username,
+            Long usuario_id, String password) {
         this.activo = activo;
         this.direccion_envio = direccion_envio;
         this.email = email;
         this.fecha_nacimiento = fecha_nacimiento;
         this.username = username;
         this.usuario_id = usuario_id;
+        this.password = password;
     }
 
     public Long getUsuario_id() {
@@ -98,5 +103,12 @@ public class Usuario {
         this.activo = activo;
     }
 
-    
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
 }
