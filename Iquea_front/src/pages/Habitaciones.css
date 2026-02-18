@@ -1,0 +1,139 @@
+.habitaciones-page {
+    padding-top: 5rem;
+    /* Space for fixed navbar */
+    min-height: 100vh;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.habitaciones-header {
+    background-color: var(--bg-secondary);
+    padding: 4rem 1rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.habitaciones-header__content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.habitaciones-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.habitaciones-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.habitaciones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 4rem;
+    padding: 0 1rem;
+}
+
+.habitaciones-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--bg-card);
+    box-shadow: var(--shadow-sm);
+}
+
+.habitaciones-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.habitaciones-card__img-wrap {
+    position: relative;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+}
+
+.habitaciones-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.habitaciones-card:hover .habitaciones-card__img {
+    transform: scale(1.05);
+}
+
+.habitaciones-card__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.habitaciones-card:hover .habitaciones-card__overlay {
+    opacity: 1;
+}
+
+.habitaciones-card__btn {
+    background: white;
+    color: var(--text-primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    transform: translateY(10px);
+    transition: transform 0.3s ease;
+}
+
+.habitaciones-card:hover .habitaciones-card__btn {
+    transform: translateY(0);
+}
+
+.habitaciones-card__info {
+    padding: 1.5rem;
+}
+
+.habitaciones-card__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.habitaciones-card__desc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .habitaciones-title {
+        font-size: 2rem;
+    }
+
+    .habitaciones-grid {
+        grid-template-columns: 1fr;
+    }
+}
