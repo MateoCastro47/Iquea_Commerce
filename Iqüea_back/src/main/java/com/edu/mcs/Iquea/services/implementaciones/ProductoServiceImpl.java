@@ -94,4 +94,11 @@ public class ProductoServiceImpl implements IProductoService {
         return productoRepository.findByNombreContainingIgnoreCase(nombre);
     }
 
+    @Override
+    @Transactional(readOnly=true)
+    public Optional<Producto> obtenerProductoPorSku(String sku) {
+        return productoRepository.findBySku(sku);
+    }
+
+    
 }

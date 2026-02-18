@@ -17,4 +17,6 @@ public interface IProductoService {
     Producto actualizarProducto(String sku, ProductoDetalleDTO dto);
 
     void borrarProducto(Long id);
+
+    Optional<Producto> obtenerProductoPorSku(String sku);
 }
