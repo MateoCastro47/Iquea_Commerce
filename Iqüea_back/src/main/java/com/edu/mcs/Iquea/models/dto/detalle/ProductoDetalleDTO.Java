@@ -9,30 +9,18 @@ public class ProductoDetalleDTO {
     private Long producto_id;
     private String sku;
     private String nombre;
+    private String descripcion;
     private BigDecimal precioCantidad;
     private String precioMoneda;
     private Double dimensionesAlto;
     private Double dimensionesAncho;
     private Double dimensionesProfundo;
     private boolean es_destacado;
+    private Integer stock;
+    private String imagen_url;
     private CategoriaResumenDTO categoria;
 
     public ProductoDetalleDTO() {
-    }
-
-    public ProductoDetalleDTO(Long producto_id, String nombre, BigDecimal precioCantidad, String precioMoneda,
-            Double dimensionesAlto, Double dimensionesAncho, Double dimensionesProfundo, boolean es_destacado,
-            CategoriaResumenDTO categoria, String sku) {
-        this.producto_id = producto_id;
-        this.nombre = nombre;
-        this.precioCantidad = precioCantidad;
-        this.precioMoneda = precioMoneda;
-        this.dimensionesAlto = dimensionesAlto;
-        this.dimensionesAncho = dimensionesAncho;
-        this.dimensionesProfundo = dimensionesProfundo;
-        this.es_destacado = es_destacado;
-        this.categoria = categoria;
-        this.sku = sku;
     }
 
     public Long getProducto_id() {
@@ -57,6 +45,14 @@ public class ProductoDetalleDTO {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     public BigDecimal getPrecioCantidad() {
@@ -105,6 +101,22 @@ public class ProductoDetalleDTO {
 
     public void setEs_destacado(boolean es_destacado) {
         this.es_destacado = es_destacado;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
+
+    public String getImagen_url() {
+        return imagen_url;
+    }
+
+    public void setImagen_url(String imagen_url) {
+        this.imagen_url = imagen_url;
     }
 
     public CategoriaResumenDTO getCategoria() {

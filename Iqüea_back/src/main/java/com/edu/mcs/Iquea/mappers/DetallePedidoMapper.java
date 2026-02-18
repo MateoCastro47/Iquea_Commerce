@@ -13,7 +13,7 @@ import com.edu.mcs.Iquea.models.dto.detalle.DetallePedidoDTO;
 @Mapper(componentModel = "spring", uses = {ProductoMapper.class, PedidoMapper.class})
 public interface DetallePedidoMapper {
 
-    @Mapping(target = "subtotal", expression = "java(calcularSubTotal(detalle_pedido))")
+    @Mapping(target = "subtotal", expression = "java(calcularSubTotal(detallePedido))")
     DetallePedidoDTO toDTO(Detalle_pedido detallePedido);
 
     Detalle_pedido toEntity(DetallePedidoDTO dto);
@@ -22,10 +22,10 @@ public interface DetallePedidoMapper {
 
     void updateFromEntity(DetallePedidoDTO dto, @MappingTarget Detalle_pedido detallePedido);
 
-    default BigDecimal calcularSubTotal(Detalle_pedido detalle_pedido){
-        if(detalle_pedido.getPrecioUnitario() == null || detalle_pedido.getCantidad() == null){
+    default BigDecimal calcularSubTotal(Detalle_pedido detallePedido) {
+        if (detallePedido.getPrecioUnitario() == null || detallePedido.getCantidad() == null) {
             return BigDecimal.ZERO;
         }
-        return detalle_pedido.getPrecioUnitario().multiply(new BigDecimal(detalle_pedido.getCantidad()));
+        return detallePedido.getPrecioUnitario().multiply(new BigDecimal(detallePedido.getCantidad()));
     }
 }
