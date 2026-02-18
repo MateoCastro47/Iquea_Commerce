@@ -90,8 +90,8 @@ public class ProductoServiceImpl implements IProductoService {
     }
 
     @Transactional
-    public List<Producto> obtenerProductoPorLetra(String nombre) {
-        return productoRepository.findByNombreContainingIgnoreCase(nombre);
+    public List<Producto> obtenerProductoPorLetra(String texto){
+        return productoRepository.findByNombreContainingIgnoreCaseOrDescripcionContainingIgnoreCase(texto, texto);
     }
 
     @Override
