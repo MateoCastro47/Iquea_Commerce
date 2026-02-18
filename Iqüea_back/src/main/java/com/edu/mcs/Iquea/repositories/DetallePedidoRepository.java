@@ -14,5 +14,7 @@ public interface DetallePedidoRepository extends JpaRepository<Detalle_pedido, L
     @Query("SELECT d FROM Detalle_pedido d WHERE d.pedido.pedido_id = :pedidoId")
     List<Detalle_pedido> findByPedidoId(@Param("pedidoId") Long pedidoId);
 
-    Optional<Detalle_pedido> findByPedidoAndProducto(Long pedido_id, Long producto_id);
+    @Query("SELECT d FROM Detalle_pedido d WHERE d.pedido.pedido_id = :pedidoId AND d.producto.producto_id = :productoId")
+    Optional<Detalle_pedido> findByPedidoAndProducto(@Param("pedidoId") Long pedidoId,
+            @Param("productoId") Long productoId);
 }

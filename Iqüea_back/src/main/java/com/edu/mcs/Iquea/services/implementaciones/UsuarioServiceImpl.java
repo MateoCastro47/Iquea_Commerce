@@ -94,7 +94,7 @@ public class UsuarioServiceImpl implements IUsuarioService {
             Usuario usuarioActualizado = usuarioRepository.findByUsername(username)
                     .orElseThrow(() -> new RuntimeException("Usuario no encontrado con nombre " + username));
 
-            usuarioMapper.updatefromEntity(dto, usuarioActualizado);
+            usuarioMapper.updateUsuarioFromDTO(dto, usuarioActualizado);
 
             // Si se envía nueva contraseña, encriptarla
             if (dto.getPassword() != null && !dto.getPassword().isBlank()) {

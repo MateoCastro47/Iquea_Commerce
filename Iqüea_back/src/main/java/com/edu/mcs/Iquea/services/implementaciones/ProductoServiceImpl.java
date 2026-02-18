@@ -73,7 +73,7 @@ public class ProductoServiceImpl implements IProductoService {
 
     @Transactional
     public List<Producto> obtenerProductosPorCategoria(Long categoriaId) {
-        return productoRepository.findByCategoriaCategoria_id(categoriaId);
+        return productoRepository.findByCategoriaId(categoriaId);
     }
 
     @Transactional
@@ -90,15 +90,14 @@ public class ProductoServiceImpl implements IProductoService {
     }
 
     @Transactional
-    public List<Producto> obtenerProductoPorLetra(String texto){
+    public List<Producto> obtenerProductoPorLetra(String texto) {
         return productoRepository.findByNombreContainingIgnoreCaseOrDescripcionContainingIgnoreCase(texto, texto);
     }
 
     @Override
-    @Transactional(readOnly=true)
+    @Transactional(readOnly = true)
     public Optional<Producto> obtenerProductoPorSku(String sku) {
         return productoRepository.findBySku(sku);
     }
 
-    
 }

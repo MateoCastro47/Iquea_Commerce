@@ -20,12 +20,10 @@ import com.edu.mcs.Iquea.models.Producto;
 import com.edu.mcs.Iquea.models.dto.detalle.ProductoDetalleDTO;
 import com.edu.mcs.Iquea.services.implementaciones.ProductoServiceImpl;
 
-
-
 @RestController
 @RequestMapping("/api/productos")
 public class ProductoController {
-    
+
     private final ProductoServiceImpl productoService;
     private final ProductoMapper productoMapper;
 
@@ -35,7 +33,7 @@ public class ProductoController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ProductoDetalleDTO>> listarTodos(){
+    public ResponseEntity<List<ProductoDetalleDTO>> listarTodos() {
         List<Producto> productos = productoService.obtenertodoslosproductos();
         return ResponseEntity.ok(productoMapper.toDTOlist(productos));
     }
@@ -43,26 +41,26 @@ public class ProductoController {
     @GetMapping("/{id}")
     public ResponseEntity<ProductoDetalleDTO> obtenerPorId(@PathVariable Long id) {
         return productoService.obtenerProductoPorId(id).map(p -> ResponseEntity.ok(productoMapper.toDTO(p)))
-        .orElse(ResponseEntity.notFound().build());
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/sku/{sku}")
-    public ResponseEntity<ProductoDetalleDTO> obtenerPorSku(@PathVariable String sku){
+    public ResponseEntity<ProductoDetalleDTO> obtenerPorSku(@PathVariable String sku) {
         return productoService.obtenerProductoPorSku(sku)
-        .map(p -> ResponseEntity.ok(productoMapper.toDTO(p)))
-        .orElse(ResponseEntity.notFound().build());
+                .map(p -> ResponseEntity.ok(productoMapper.toDTO(p)))
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/precio")
     public ResponseEntity<List<ProductoDetalleDTO>> porRangoPrecio(
-        @RequestParam BigDecimal min,
-        @RequestParam BigDecimal max) {
-            List<Producto> productos = productoService.obtenerProductoPorRango(min, max);
-            return ResponseEntity.ok(productoMapper.toDTOlist(productos));
-        }
+            @RequestParam BigDecimal min,
+            @RequestParam BigDecimal max) {
+        List<Producto> productos = productoService.obtenerProductoPorRango(min, max);
+        return ResponseEntity.ok(productoMapper.toDTOlist(productos));
+    }
 
     @GetMapping("/buscar")
-    public ResponseEntity<List<ProductoDetalleDTO>> buscarPorNombre(@RequestParam String nombre){
+    public ResponseEntity<List<ProductoDetalleDTO>> buscarPorNombre(@RequestParam String nombre) {
         List<Producto> productos = productoService.obtenerProductoPorLetra(nombre);
         return ResponseEntity.ok(productoMapper.toDTOlist(productos));
     }
@@ -72,7 +70,7 @@ public class ProductoController {
         List<Producto> productos = productoService.obtenerProductosPorDestacado(true);
         return ResponseEntity.ok(productoMapper.toDTOlist(productos));
     }
-    
+
     @PostMapping
     public ResponseEntity<ProductoDetalleDTO> crear(@RequestBody ProductoDetalleDTO dto) {
         Producto creado = productoService.crearProducto(dto);
@@ -81,14 +79,14 @@ public class ProductoController {
 
     @PutMapping("/sku/{sku}")
     public ResponseEntity<ProductoDetalleDTO> actualizar(
-        @PathVariable String sku,
-        @RequestBody ProductoDetalleDTO dto){
-            Producto actualizado = productoService.actualizarProducto(sku, dto);
-            return ResponseEntity.ok(productoMapper.toDTO(actualizado));
-        }
+            @PathVariable String sku,
+            @RequestBody ProductoDetalleDTO dto) {
+        Producto actualizado = productoService.actualizarProducto(sku, dto);
+        return ResponseEntity.ok(productoMapper.toDTO(actualizado));
+    }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Long id){
+    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         productoService.borrarProducto(id);
         return ResponseEntity.noContent().build();
     }
