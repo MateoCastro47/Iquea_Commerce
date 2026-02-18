@@ -14,4 +14,7 @@ public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
     Optional<Usuario> findByUsername(String username);
 
+    // Busca por el String interno del Value Object Email (usado en login)
+    Optional<Usuario> findByEmailValue(String emailValue);
+
 }
