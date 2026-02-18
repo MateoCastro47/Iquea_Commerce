@@ -10,7 +10,6 @@ import com.edu.mcs.Iquea.models.Producto;
 import com.edu.mcs.Iquea.models.dto.detalle.ProductoDetalleDTO;
 import com.edu.mcs.Iquea.models.dto.resumen.ProductoResumenDTO;
 
-
 @Mapper(componentModel = "spring", uses = { CategoriaMapperResumen.class })
 public interface ProductoMapper {
 
@@ -20,6 +19,7 @@ public interface ProductoMapper {
     @Mapping(source = "dimensiones.alto", target = "dimensionesAlto")
     @Mapping(source = "dimensiones.ancho", target = "dimensionesAncho")
     @Mapping(source = "dimensiones.profundidad", target = "dimensionesProfundo")
+    @Mapping(source = "imagenUrl", target = "imagen_url")
     ProductoDetalleDTO toDTO(Producto producto);
 
     @Mapping(source = "precio.cantidad", target = "precioCantidad")
