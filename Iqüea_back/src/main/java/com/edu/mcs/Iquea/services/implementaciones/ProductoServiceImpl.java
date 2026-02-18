@@ -14,8 +14,8 @@ import com.edu.mcs.Iquea.repositories.ProductoRepository;
 import com.edu.mcs.Iquea.services.IProductoService;
 
 @Service
-public class ProductoServiceImpl implements IProductoService{
-    
+public class ProductoServiceImpl implements IProductoService {
+
     private final ProductoRepository productoRepository;
     private final ProductoMapper productoMapper;
 
@@ -27,14 +27,14 @@ public class ProductoServiceImpl implements IProductoService{
     @Override
     @Transactional
     public Producto actualizarProducto(String sku, ProductoDetalleDTO dto) {
-        try{
-        Producto productoActualizado = productoRepository.findBySku(sku)
-        .orElseThrow(() -> new RuntimeException("Producto no encontrado con Sku " + sku));
+        try {
+            Producto productoActualizado = productoRepository.findBySku(sku)
+                    .orElseThrow(() -> new RuntimeException("Producto no encontrado con Sku " + sku));
 
-        productoMapper.updatefromEntity(dto, productoActualizado);
+            productoMapper.updatefromEntity(dto, productoActualizado);
 
-        return productoRepository.save(productoActualizado);
-        }catch(IllegalArgumentException e){
+            return productoRepository.save(productoActualizado);
+        } catch (IllegalArgumentException e) {
             throw new RuntimeException("Datos del producto no validos");
         }
     }
@@ -42,9 +42,9 @@ public class ProductoServiceImpl implements IProductoService{
     @Override
     @Transactional
     public void borrarProducto(Long id) {
-        if(productoRepository.existsById(id)){
+        if (productoRepository.existsById(id)) {
             productoRepository.deleteById(id);
-        }else{
+        } else {
             throw new RuntimeException("El producto con id " + id + " no existe");
         }
     }
@@ -70,28 +70,28 @@ public class ProductoServiceImpl implements IProductoService{
     public List<Producto> obtenertodoslosproductos() {
         return productoRepository.findAll();
     }
-    
+
     @Transactional
     public List<Producto> obtenerProductosPorCategoria(Long categoriaId) {
-        return productoRepository.findbyCategoriaId(categoriaId);
+        return productoRepository.findByCategoriaCategoria_id(categoriaId);
     }
 
     @Transactional
-    public List<Producto> obtenerProductosPorDestacado(boolean es_destacado){
-        return productoRepository.findbyes_destacado(es_destacado);
+    public List<Producto> obtenerProductosPorDestacado(boolean es_destacado) {
+        return productoRepository.findByEs_destacado(es_destacado);
     }
 
     @Transactional
-    public List<Producto> obtenerProductoPorRango(BigDecimal precioMinimo, BigDecimal precioMaximo){
+    public List<Producto> obtenerProductoPorRango(BigDecimal precioMinimo, BigDecimal precioMaximo) {
         if (precioMaximo.compareTo(precioMinimo) < 0) {
             throw new IllegalArgumentException("El precio máximo no puede ser menor que el mínimo");
         }
-        return productoRepository.findbyPrecioCantidadBetween(precioMinimo, precioMaximo);
+        return productoRepository.findByPrecioCantidadBetween(precioMinimo, precioMaximo);
     }
 
     @Transactional
-    public List<Producto> obtenerProductoPorLetra(String nombre){
-        return productoRepository.findbyNombreContainingCase(nombre);
+    public List<Producto> obtenerProductoPorLetra(String nombre) {
+        return productoRepository.findByNombreContainingIgnoreCase(nombre);
     }
 
 }
